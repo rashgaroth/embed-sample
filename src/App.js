@@ -4,7 +4,6 @@ import upbondServices from "lib/UpbondEmbed";
 import { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import Web3 from "web3";
-import asobiAbi from './asobiMint.json';
 
 /* 
   Read this:
@@ -12,9 +11,6 @@ import asobiAbi from './asobiMint.json';
   if you're using hooks, sure you can put the new Upbond({}) on the useState.
   We're using this example because we're usually using this method for implementing the @upbond/upbond-embed lib
 */
-
-const erc20FactoryContract = '0xc80101fA4E473F47Fea06288FbF0D2ff8C9fF9e7'
-const mintContract = '0x9008347b7b15C99cA963A750e03cAb4801620188'
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -207,7 +203,7 @@ const App = () => {
         <p className="text-center uppercase font-bold my-3">
           sample dapps with upbond embed
         </p>
-        <img src={UpbondLogo} className="w-1/2 mx-auto" alt="UpbondBanner" />
+        <img src={'https://miro.medium.com/max/1200/1*jfdwtvU6V6g99q3G7gq7dQ.png'} className="w-1/2 mx-auto rounded-xl m-5" alt="UpbondBanner" />
         {account ? (
           <>
             <div>
@@ -325,7 +321,7 @@ const App = () => {
               <div className="flex flex-1 flex-col space-y-3">
                 <button
                   type="button"
-                  className="mx-auto px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  w-1/4"
+                  className="mx-auto px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  w-1/4"
                   onClick={login}
                 >
                   Login 3.0

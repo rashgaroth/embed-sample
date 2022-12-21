@@ -34,9 +34,9 @@ class UpbondEmbed {
         buildEnv: this.env,
         // isUsingDirect: false,
         skipDialog: false,
-        dappRedirectUri: `${window.location.origin}/sapi`,
+        dappRedirectUri: `${window.location.origin}/`,
         network: {
-          host: "https://matic-testnet-archive-rpc.bwarelabs.com",
+          host: "https://polygon-testnet.public.blastapi.io",
           chainId: 80001,
           networkName: "Mumbai",
           blockExplorer: "",
@@ -45,10 +45,11 @@ class UpbondEmbed {
         },
         // selectedVerifier: 'upbond-wallet-tesnet-line',
         loginConfig: {
-          "upbond-wallet-tesnet-line": {
+          "upbond-line": {
             name: "Login With Line",
             description: "LINE with UPBOND Identity",
             typeOfLogin: "line",
+            loginProvider: "upbond-lie",
             jwtParams: {
               domain: "https://lzg2dndj.auth.dev.upbond.io",
               connection: "line",
@@ -82,7 +83,11 @@ class UpbondEmbed {
           buttonLogo: 'https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png',
           modalColor: '#F3f3f3',
           primaryColor: '#f3f3f3',
-          isActive: true
+          isActive: true,
+          bgColor: '#f3f3f3',
+          textColor: '#0e0e0e',
+          bgColorHover: '#0e0e0e',
+          textColorHover: '#f3f3f3',
         }
       })
       this.initialized = true
