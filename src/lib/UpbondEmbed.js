@@ -15,7 +15,7 @@ class UpbondEmbed {
   web3 = null
 
   // you can also using another envs.
-  env = "v2_local"
+  env = "v2_development"
   
   provider
 
