@@ -5,6 +5,7 @@ import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import Web3Token from "web3-token";
 import { ethers } from "ethers";
 import { toast } from "react-hot-toast";
+import { network } from "../config";
 
 class UpbondEmbed {
 
@@ -14,7 +15,7 @@ class UpbondEmbed {
   web3 = null
 
   // you can also using another envs.
-  env = "v2_development"
+  env = "v2_local"
   
   provider
 
@@ -35,14 +36,7 @@ class UpbondEmbed {
         // isUsingDirect: false,
         skipDialog: false,
         dappRedirectUri: `${window.location.origin}/`,
-        network: {
-          host: "https://polygon-testnet.public.blastapi.io",
-          chainId: 80001,
-          networkName: "Mumbai",
-          blockExplorer: "",
-          ticker: "MUMBAI",
-          tickerName: "MUMBAI",
-        },
+        network: network,
         // selectedVerifier: 'upbond-wallet-tesnet-line',
         loginConfig: {
           "upbond-line": {
@@ -81,13 +75,17 @@ class UpbondEmbed {
           name: "Medium",
           modalLogo: 'https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png',
           buttonLogo: 'https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png',
-          modalColor: '#F3f3f3',
-          primaryColor: '#f3f3f3',
+          modalColor: '#F3F4F4',
+          primaryColor: '#F3F4F4',
           isActive: true,
-          bgColor: '#f3f3f3',
-          textColor: '#0e0e0e',
-          bgColorHover: '#0e0e0e',
-          textColorHover: '#f3f3f3',
+          bgColor: '#0e0e0e',
+          textColor: '#f3f3f3',
+          bgColorHover: '#7F8389',
+          textColorHover: '#0e0e0e',
+          upbondLogin: {
+            globalBgColor: '#f4f4f4',
+            globalTextColor: '#0e0e0e'
+          }
         }
       })
       this.initialized = true
