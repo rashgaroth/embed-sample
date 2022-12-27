@@ -8,25 +8,24 @@ import { toast } from "react-hot-toast";
 import { network } from "../config";
 
 class UpbondEmbed {
-
   // Initials
-  upbond = null
+  upbond = null;
 
-  web3 = null
+  web3 = null;
 
   // you can also using another envs.
-  env = "v2_local"
-  
-  provider
+  env = "v2_local";
 
-  isLoggedIn = false
+  provider;
 
-  initialized = false
+  isLoggedIn = false;
+
+  initialized = false;
 
   constructor() {
-    this.upbond = new Upbond({})
-    this.web3 = new Web3()
-    this.provider = null
+    this.upbond = new Upbond({});
+    this.web3 = new Web3();
+    this.provider = null;
   }
 
   async init() {
@@ -48,7 +47,7 @@ class UpbondEmbed {
               domain: "https://lzg2dndj.auth.dev.upbond.io",
               connection: "line",
               client_id: "FoQ_Ri8rKSXkHf82GRzZK",
-              clientId: 'FoQ_Ri8rKSXkHf82GRzZK',
+              clientId: "FoQ_Ri8rKSXkHf82GRzZK",
               scope: "openid email profile offline_access",
               // redirect_uri: "http://localhost:3000/auth",
             },
@@ -56,66 +55,71 @@ class UpbondEmbed {
               domain: "https://lzg2dndj.auth.dev.upbond.io",
               connection: "line",
               client_id: "FoQ_Ri8rKSXkHf82GRzZK",
-              clientId: 'FoQ_Ri8rKSXkHf82GRzZK',
+              clientId: "FoQ_Ri8rKSXkHf82GRzZK",
               scope: "openid email profile offline_access",
             },
-            clientId: "BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU",
+            clientId:
+              "BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU",
             logo: "https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png",
             showOnModal: true,
             showOnDesktop: true,
             showOnMobile: true,
             mainOption: true,
             priority: 1,
-            buttonBgColor: '#0E0E0E',
-            buttonTextColor: '#FFF'
-          }
+            buttonBgColor: "#0E0E0E",
+            buttonTextColor: "#FFF",
+          },
         },
         whiteLabel: {
-          logo: 'https://miro.medium.com/max/1200/1*jfdwtvU6V6g99q3G7gq7dQ.png',
-          name: "Medium",
-          modalLogo: 'https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png',
-          buttonLogo: 'https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png',
-          modalColor: '#F3F4F4',
-          primaryColor: '#F3F4F4',
-          isActive: true,
-          bgColor: '#0e0e0e',
-          textColor: '#f3f3f3',
-          bgColorHover: '#7F8389',
-          textColorHover: '#0e0e0e',
-          upbondLogin: {
-            globalBgColor: '#f4f4f4',
-            globalTextColor: '#0e0e0e'
-          }
-        }
-      })
-      this.initialized = true
+          walletTheme: {
+            logo: "https://miro.medium.com/max/1200/1*jfdwtvU6V6g99q3G7gq7dQ.png",
+            name: "Medium",
+            modalLogo:
+              "https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png",
+            buttonLogo:
+              "https://cdn.freebiesupply.com/images/large/2x/medium-icon-white-on-black.png",
+            modalColor: "#F3F4F4",
+            primaryColor: "#F3F4F4",
+            isActive: true,
+            bgColor: "#0e0e0e",
+            textColor: "#f3f3f3",
+            bgColorHover: "#7F8389",
+            textColorHover: "#0e0e0e",
+            upbondLogin: {
+              globalBgColor: "#f4f4f4",
+              globalTextColor: "#0e0e0e",
+            },
+          },
+        },
+      });
+      this.initialized = true;
     }
   }
 
   async login() {
     try {
       if (this.upbond instanceof Upbond && this.web3 instanceof Web3) {
-        const _provider = await this.upbond.login() // login using upbond
-        this.web3.setProvider(this.upbond.provider)
+        const _provider = await this.upbond.login(); // login using upbond
+        this.web3.setProvider(this.upbond.provider);
 
-        const accounts = await this.web3.eth.getAccounts()
+        const accounts = await this.web3.eth.getAccounts();
 
-        this.isLoggedIn = true
-        this.provider = _provider
+        this.isLoggedIn = true;
+        this.provider = _provider;
         return {
-          msg: 'success',
+          msg: "success",
           data: _provider,
-          accounts
+          accounts,
           // ... anything that you want to returns
-        }
+        };
       }
     } catch (error) {
-      console.log(error, '@errorOnReactProject?')
-      toast.error(error.message || 'Some error occured')
+      console.log(error, "@errorOnReactProject?");
+      toast.error(error.message || "Some error occured");
       return {
-        msg: error.message || 'Failed to login',
-        data: null
-      }
+        msg: error.message || "Failed to login",
+        data: null,
+      };
     }
   }
 
@@ -128,29 +132,34 @@ class UpbondEmbed {
         rpcTarget: `https://polygon-mumbai.infura.io/v3/74a97bae118345ecbadadaaeb1cf4a53`,
         blockExplorer: "https://polygonscan.com",
         ticker: "MATIC",
-        tickerName: "Polygon"
+        tickerName: "Polygon",
       },
-      clientId: 'BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU',
+      clientId:
+        "BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU",
       authMode: "WALLET",
       uiConfig: {
         theme: "light",
         loginMethodsOrder: ["line", "google"],
-        appLogo: "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg" // Your App Logo Here
-      }
+        appLogo:
+          "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg", // Your App Logo Here
+      },
     });
 
     const adapter = new OpenloginAdapter({
       adapterSettings: {
         network: "testnet",
-        clientId: "BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU",
+        clientId:
+          "BGbtA2oA0SYvm1fipIPaSgSTPfGJG8Q6Ep_XHuZY9qQVW5jUXTMd0l8xVtXPx91aCmFfuVqTZt9CK79BgHTNanU",
         uxMode: "redirect",
         _iframeUrl: "http://localhost:3002",
         whiteLabel: {
           name: "SAPI",
-          logoLight: "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg",
-          logoDark: "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg",
+          logoLight:
+            "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg",
+          logoDark:
+            "https://app.dev.upbond.io/assets/images/common/UPBOND%E3%83%AD%E3%82%B4new-01.svg",
           defaultLanguage: "en",
-          dark: false // whether to enable dark mode. defaultValue: false
+          dark: false, // whether to enable dark mode. defaultValue: false
         },
         loginConfig: {
           jwt: {
@@ -162,56 +171,56 @@ class UpbondEmbed {
             jwtParameters: {
               domain: "https://lzg2dndj.auth.dev.upbond.io",
               client_id: "hxFv4SaQVXv3tE_rhe5u9",
-              connection: "google"
-            }
-          }
-        }
-      }
+              connection: "google",
+            },
+          },
+        },
+      },
     });
 
-    web3AuthInstance.configureAdapter(adapter)
-    await web3AuthInstance.init()
+    web3AuthInstance.configureAdapter(adapter);
+    await web3AuthInstance.init();
     await web3AuthInstance.connectTo(adapter.name, {
-      loginProvider: 'jwt',
+      loginProvider: "jwt",
       extraLoginOptions: {
         verifierIdField: "sub", // same as your JWT Verifier ID
         domain: "https://lzg2dndj.auth.dev.upbond.io",
         client_id: "hxFv4SaQVXv3tE_rhe5u9",
-        response_type: "code id_token"
-      }
-    })
+        response_type: "code id_token",
+      },
+    });
   }
 
   async logout() {
     try {
       if (this.upbond instanceof Upbond) {
-        await this.upbond.logout()
-        await this.upbond.cleanUp()
-        window.location.reload()
+        await this.upbond.logout();
+        await this.upbond.cleanUp();
+        window.location.reload();
 
         return {
-          msg: 'success',
-          data: true
-        }
+          msg: "success",
+          data: true,
+        };
       }
     } catch (error) {
-      toast.error(error.message || 'Some error occured')
+      toast.error(error.message || "Some error occured");
       return {
-        msg: error.message || 'Failed to login',
-        data: null
-      }
+        msg: error.message || "Failed to login",
+        data: null,
+      };
     }
   }
 
   async getUserInfo() {
     if (this.upbond instanceof Upbond) {
       try {
-        const userInfo = await this.upbond.getUserInfo()
+        const userInfo = await this.upbond.getUserInfo();
 
-        return userInfo
+        return userInfo;
       } catch (error) {
-        toast.error(error.message || 'Some error occured')
-        throw new Error(error)
+        toast.error(error.message || "Some error occured");
+        throw new Error(error);
       }
     }
   }
@@ -219,34 +228,33 @@ class UpbondEmbed {
   async signTransaction(msg = "", account) {
     if (this.web3 instanceof Web3) {
       try {
-        this.web3.setProvider(this.upbond.provider)
-        const sign = await this.web3.eth.sign(msg, account)
-        return sign
+        this.web3.setProvider(this.upbond.provider);
+        const sign = await this.web3.eth.sign(msg, account);
+        return sign;
       } catch (error) {
-        console.error(error)
-        toast.error(error.message || 'Some error occured')
-        return null
+        console.error(error);
+        toast.error(error.message || "Some error occured");
+        return null;
       }
     }
   }
   async signWeb3Token(account) {
     try {
-      const ether = new ethers.providers.Web3Provider(this.upbond.provider)
-      const signer = await ether.getSigner()
+      const ether = new ethers.providers.Web3Provider(this.upbond.provider);
+      const signer = await ether.getSigner();
       const sign = await Web3Token.sign(async (msg) => {
         if (this.web3 instanceof Web3) {
-          return await signer.signMessage(msg)
+          return await signer.signMessage(msg);
         }
-      }, '1d')
-      return sign
+      }, "1d");
+      return sign;
     } catch (error) {
-      toast.error(error.message || 'Some error occured')
-      return
+      toast.error(error.message || "Some error occured");
+      return;
     }
   }
 }
 
+const upbondServices = new UpbondEmbed();
 
-const upbondServices = new UpbondEmbed()
-
-export default upbondServices
+export default upbondServices;
